@@ -1,0 +1,16 @@
+window.t10.setResource({
+    "common.brand.my": "My",
+    "common.brand.address": "Address",
+    "common.dialog.yes": "はい",
+    "common.dialog.not_now": "あとで",
+    "common.dialog.thanks_for_using_app": "使ってくれてありがとう！",
+    "common.dialog.would_you_review_the_app": "アプリを評価しませんか？",
+    "common.loading": "読み込み中...",
+    "common.googleplay": "Google Play",
+    "common.reload": "リロード",
+    "ip.done": "完了!",
+    "ip.failed": "読み込み失敗...",
+    "ip.failed_to_get_new_ip_record": "IP アドレスの取得に失敗しました。時間をおいて再度お試しください。",
+    "ip.start_loading": "IP アドレスを取得しています...",
+    "page.history": "履歴",
+});

@@ -1,0 +1,35 @@
+
+//= require 'bootstrap'
+
+@charset "utf-8";
+
+
+body, html {
+  background: #e4e4e4;
+}
+
+
+/* hide untranslated elems */
+t, .t-text, .t-attr {
+
+    visibility: hidden;
+
+}
+
+
+.no-wrap {
+    white-space: nowrap;
+}
+
+.page-title {
+    text-align: center;
+}
+
+
+#footer {
+    margin-top: 50px;
+    border-top: solid 1px #bbb;
+    padding-top: 30px;
+    color: #777;
+    text-align: center;
+}

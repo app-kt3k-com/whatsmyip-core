@@ -1,0 +1,103 @@
+---
+title: My IP Address
+---
+
+<div class="container">
+
+  <h2 class="page-title">Current IP Address</h2>
+
+  {% include 'loading' %}
+
+  <div class="ip-load-done" style="margin-top: 30px; ">
+
+    <button type="button" class="btn btn-info link-to-records main-control" style="visibility: hidden;">
+
+      <i class="fa fa-calendar"></i> <t>page.history</t>
+
+    </button>
+
+    <button type="button" class="btn btn-default ip-reload-button main-control" style="visibility: hidden;">
+
+      <i class="fa fa-refresh"></i> <t>common.reload</t>
+
+    </button>
+
+  </div>
+
+  <!--div style="margin-top: 30px;">
+
+    <button class="btn btn-primary" data-toggle="modal" data-target="#ask-review">
+
+      launch modal demo
+
+    </button>
+
+  </div-->
+
+</div>
+
+{% include 'footer' %}
+
+<div class="modal fade" id="ask-review" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="margin-top: 68px;">
+
+  <div class="modal-dialog">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+        <h4 class="modal-title" id="myModalLabel">
+
+          <i class="fa fa-heart"></i>
+
+          <t>common.dialog.thanks_for_using_app</t>
+
+        </h4>
+
+      </div>
+
+      <div style="text-align: center;" class="modal-body">
+
+        <i class="fa fa-bullhorn"></i> <t>common.dialog.would_you_review_the_app</t><br /><br />
+
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+
+      </div>
+
+      <div class="modal-footer">
+
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="window.page.index.doReview();">
+
+            <i class="fa fa-thumbs-up"></i>
+
+            <t>common.dialog.yes</t>
+
+          </button>
+
+          <button type="button" class="btn btn-default" data-dismiss="modal">
+
+            <t>common.dialog.not_now</t>
+
+            <i class="fa fa-meh-o"></i>
+
+          </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+  $(window.page.index.main);
+
+</script>

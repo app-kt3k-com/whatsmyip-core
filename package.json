@@ -1,0 +1,21 @@
+{
+  "name": "whatsmyip-core",
+  "version": "0.0.0",
+  "description": "ERROR: No README.md file found!",
+  "main": "index.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kt3k/com.kt3k.app.whatsmyip.git"
+  },
+  "author": "Yosiya Hinosawa",
+  "license": "MIT",
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-jasmine": "~0.5.2",
+    "jasmine-jscoverage-reporter": "git://github.com/kt3k/jasmine-jscoverage-reporter#v0.1.2"
+  }
+}
