@@ -38,7 +38,7 @@ describe('IpRecordFactory', function () {
 
     describe('createUsingDynDNS', function () {
 
-        it('create IpRecord using DynDNS api', function () {
+        it('creates IpRecord using DynDNS api', function () {
 
             var stubGet = sinon.stub(straw.http, 'get');
             stubGet.withArgs('http://checkip.dyndns.com/').returns($.Deferred().resolve({content: '<html><body>Ip Address is: 11.12.13.14</body></html>'}));
@@ -82,7 +82,7 @@ describe('IpRecordFactory', function () {
 
     describe('createFromObject', function () {
 
-        it('create ip record from object', function () {
+        it('creates ip record from object', function () {
 
             var ipRecord = IpRecordFactory.createFromObject({'ipAddr': '8.8.8.8', 'countryCode': 'JPN', 'createdAt': 123456});
             expect(ipRecord instanceof IpRecord).toBe(true);
