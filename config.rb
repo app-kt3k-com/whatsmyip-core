@@ -1,9 +1,16 @@
 # middleman config file
 # see http://middlemanapp.com/
 
+require 'yaml'
+
+config_plus = '../middleman-plus.yml'
+
+# load platform specific middleman settings
+platform_settings = File.exist?(config_plus) ? YAML.load_file(config_plus) : {}
+
 set :source, 'm'
 
-set :build_dir, 'src/main/assets'
+set :build_dir, platform_settings['build_dir'] ? platform_settings['build_dir'] : 'middleman-build'
 
 set :css_dir, 'stylesheets'
 
