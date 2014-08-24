@@ -70,7 +70,7 @@ describe('IpRecordFactory', function () {
 
         });
 
-        it('retruns null if Json string broken', function () {
+        it('returns null if Json string broken', function () {
 
             var ipRecord = IpRecordFactory.createFromJsonString('{broken!}');
 
