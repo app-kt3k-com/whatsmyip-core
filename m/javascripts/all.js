@@ -10,4 +10,4 @@
 
 //= require_tree ../../bower_components/straw-android-plugin.js/src
 
-//= require_tree ../../app/src
+//= require_tree ../../src
