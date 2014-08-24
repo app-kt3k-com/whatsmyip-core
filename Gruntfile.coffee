@@ -13,7 +13,7 @@ module.exports = (g) ->
     jasmine:
 
       options:
-        specs: 'spec/*spec.js'
+        specs: 'spec/**/*.js'
         vendor: [
           'bower_components/jquery/jquery.min.js'
           'bower_components/straw-android/src/**/*.js'
@@ -24,10 +24,10 @@ module.exports = (g) ->
         ]
 
       app:
-        src: 'src/domain/*.js'
+        src: 'src/domain/**/*.js'
 
       'app-cov':
-        src: 'src-cov/domain/*.js'
+        src: 'src-cov/domain/**/*.js'
         options:
           helpers: [
             'bower_components/sinon-1.7.3.js/index.js'
