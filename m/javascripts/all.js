@@ -6,8 +6,8 @@
 
 //= require t10
 
-//= require straw-android
+//= require_directory ../../../infrastructure
 
-//= require_tree ../../bower_components/straw-android-plugin.js/src
+//= require_tree ../../src/domain
 
-//= require_tree ../../src
+//= require_tree ../../src/application

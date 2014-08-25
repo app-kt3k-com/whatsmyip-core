@@ -21,6 +21,7 @@ set :images_dir, 'images'
 ready do
   sprockets.append_path File.join root, "bower_components"
   sprockets.append_path '../src'
+  sprockets.append_path '../../infrastructure'
 end
 
 
