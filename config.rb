@@ -10,7 +10,7 @@ platform_settings = File.exist?(config_plus) ? YAML.load_file(config_plus) : {}
 
 set :source, 'm'
 
-set :build_dir, platform_settings['build_dir'] ? platform_settings['build_dir'] : 'middleman-build'
+set :build_dir, platform_settings['build_dir'] || 'middleman-build'
 
 set :css_dir, 'stylesheets'
 
@@ -20,8 +20,9 @@ set :images_dir, 'images'
 
 ready do
   sprockets.append_path File.join root, "bower_components"
-  sprockets.append_path '../src'
-  sprockets.append_path '../../infrastructure'
+  sprockets.append_path File.join root, "../bower_components" # bower components of the parent project
+  sprockets.append_path '../src' # main implementations
+  sprockets.append_path '../../infrastructure' # infrastructure implementations in the parent project
 end
 
 
