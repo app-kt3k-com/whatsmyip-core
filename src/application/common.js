@@ -1,5 +1,5 @@
 
-window.common = (function (window, t10, straw, Promise) {
+window.common = (function (window, t10, Promise, infrastructure) {
     'use strict';
 
     var APP_ID = 'com.kt3k.app.whatsmyip';
@@ -12,7 +12,7 @@ window.common = (function (window, t10, straw, Promise) {
 
     exports.getLanguage = function (language) {
 
-        return Promise.resolve(language || straw.locale.getLanguage());
+        return Promise.resolve(language || infrastructure.locale.getLanguage());
 
     };
 
@@ -35,11 +35,10 @@ window.common = (function (window, t10, straw, Promise) {
             id = APP_ID;
         }
 
-        straw.uri.open('market://details?id=' + id).fail(function () {
-            straw.browser.open('https://play.google.com/store/apps/id=' + id);
-        });
+        infrastructure.externalService.openMarketLink(id);
+
     };
 
     return exports;
 
-}(window, window.t10, window.straw, window.Promise));
+}(window, window.t10, window.Promise, window.infrastructure));
