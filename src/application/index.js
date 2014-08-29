@@ -2,7 +2,7 @@
 
 window.page = window.page || {};
 
-window.page.index = (function (window, $, t10) {
+window.page.index = (function (window, $, t10, infrastructure) {
     'use strict';
 
     var IP_LOADING_ID = '#ip-loading';
@@ -70,7 +70,7 @@ window.page.index = (function (window, $, t10) {
     var gotNewIpRecord = function (ipRecord) {
 
         // toast welcome message
-        window.straw.ui.toast(t10.t('ip.done'));
+        infrastructure.platformUI.toast(t10.t('ip.done'));
 
         handleUserActivity();
 
@@ -113,7 +113,7 @@ window.page.index = (function (window, $, t10) {
 
     var failedToGetNewIpRecord = function () {
         // toast welcome message
-        window.straw.ui.toast(t10.t('ip.failed_to_get_new_ip_record'));
+        infrastructure.platformUI.toast(t10.t('ip.failed_to_get_new_ip_record'));
 
         // fill ui
         fillIpAddr(t10.t('ip.failed'), false);
@@ -154,7 +154,7 @@ window.page.index = (function (window, $, t10) {
         var t10 = window.t10;
 
         // toast welcome message
-        window.straw.ui.toast(t10.t('ip.start_loading'));
+        infrastructure.platformUI.toast(t10.t('ip.start_loading'));
 
         // remove ip label
         $(IP_INPUT_ID).val('');
@@ -255,4 +255,4 @@ window.page.index = (function (window, $, t10) {
 
     return exports;
 
-}(window, window.$, window.t10));
+}(window, window.$, window.t10, window.infrastructure));
