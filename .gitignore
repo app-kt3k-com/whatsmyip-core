@@ -3,3 +3,6 @@ bower_components
 
 # npm modules
 node_modules
+
+# instrumented src
+src-cov

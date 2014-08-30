@@ -39,6 +39,7 @@ module.exports = (g) ->
         options:
           helpers: [
             'bower_components/sinon-1.7.3.js/index.js'
+            'spec-helper/infrastructure.js'
             'node_modules/jasmine-jscoverage-reporter/reporter.js'
           ]
 
