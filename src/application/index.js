@@ -204,11 +204,9 @@ window.page.index = (function (window, $, t10, infrastructure) {
             }
 
 
-            window.IpRecordFactory.createFromGeoipReflector(5000)
-                .done(function (ipRecord) {
-                    d.resolve(ipRecord);
-                })
-                .fail(tryToLoad);
+            window.IpRecordFactory.createFromGeoipReflector(5000).then(function (ipRecord) {
+                d.resolve(ipRecord);
+            }, tryToLoad);
         };
 
         tryToLoad();

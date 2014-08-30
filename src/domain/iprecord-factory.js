@@ -1,6 +1,6 @@
 // Ip record factory class
 
-window.IpRecordFactory = (function ($, straw) {
+window.IpRecordFactory = (function ($, straw, infrastructure) {
     'use strict';
 
     var exports = {};
@@ -10,8 +10,8 @@ window.IpRecordFactory = (function ($, straw) {
      * @return promise which will be done with IpRecord object or failed with error messages
      */
     exports.createUsingDynDNS = function () {
-        return straw.http.get('http://checkip.dyndns.com/').pipe(function (obj) {
-            return exports.createFromDynDNSResponseText(obj.content);
+        return infrastructure.http.get('http://checkip.dyndns.com/').then(function (obj) {
+            return exports.createFromDynDNSResponseText(obj.responseText);
         });
     };
 
@@ -40,8 +40,8 @@ window.IpRecordFactory = (function ($, straw) {
      *
      */
     exports.createFromGeoipReflector = function (timeout) {
-        return straw.http.get('http://geoip-reflector.herokuapp.com/', timeout).pipe(function (obj) {
-            return exports.createFromGeoipReflectorResponseText(obj.content);
+        return infrastructure.http.get('http://geoip-reflector.herokuapp.com/', timeout).then(function (obj) {
+            return exports.createFromGeoipReflectorResponseText(obj.responseText);
         });
     };
 
@@ -111,4 +111,4 @@ window.IpRecordFactory = (function ($, straw) {
 
     return exports;
 
-}(window.$, window.straw));
+}(window.$, window.straw, window.infrastructure));

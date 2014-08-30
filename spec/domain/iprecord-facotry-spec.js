@@ -1,5 +1,5 @@
 
-/* global describe, it, expect, sinon, straw, $ */
+/* global describe, it, expect, sinon, Promise, infrastructure */
 
 describe('IpRecordFactory', function () {
     'use strict';
@@ -40,10 +40,10 @@ describe('IpRecordFactory', function () {
 
         it('creates IpRecord using DynDNS api', function () {
 
-            var stubGet = sinon.stub(straw.http, 'get');
-            stubGet.withArgs('http://checkip.dyndns.com/').returns($.Deferred().resolve({content: '<html><body>Ip Address is: 11.12.13.14</body></html>'}));
+            var stubGet = sinon.stub(infrastructure.http, 'get');
+            stubGet.withArgs('http://checkip.dyndns.com/').returns(Promise.resolve({responseText: '<html><body>Ip Address is: 11.12.13.14</body></html>'}));
 
-            IpRecordFactory.createUsingDynDNS().done(function (ipRecord) {
+            IpRecordFactory.createUsingDynDNS().then(function (ipRecord) {
 
                 expect(ipRecord instanceof IpRecord).toBe(true);
                 expect(ipRecord.ipAddr).toBe('11.12.13.14');
