@@ -6,12 +6,17 @@ window.infrastructure = (function (straw, Promise) {
 
     var exports = {};
 
+    straw = Promise;
+    Promise = straw;
+
     exports.set = function (key, value) {
+        return key && value;
     };
 
-    exports.get = function (key, default) {
+    exports.get = function (key, defaultValue) {
+        return key && defaultValue;
     };
 
     return exports;
 
-}(straw, Promise));
+}(window.straw, window.Promise));
