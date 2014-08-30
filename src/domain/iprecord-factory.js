@@ -1,6 +1,6 @@
 // Ip record factory class
 
-window.IpRecordFactory = (function ($, straw, infrastructure) {
+window.IpRecordFactory = (function (infrastructure) {
     'use strict';
 
     var exports = {};
@@ -111,4 +111,4 @@ window.IpRecordFactory = (function ($, straw, infrastructure) {
 
     return exports;
 
-}(window.$, window.straw, window.infrastructure));
+}(window.infrastructure));
