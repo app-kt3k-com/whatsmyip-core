@@ -21,10 +21,10 @@ module.exports = (g) ->
           'bower_components/straw-android-plugin.js/src/**/*.js'
           '../bower_components/straw-android/src/**/*.js'
           '../bower_components/straw-android-plugin.js/src/**/*.js'
-          'src/infrastructure/**/*.js'
         ]
         helpers: [
           'bower_components/sinon-1.7.3.js/index.js'
+          'spec-helper/infrastructure.js'
         ]
 
       app:
