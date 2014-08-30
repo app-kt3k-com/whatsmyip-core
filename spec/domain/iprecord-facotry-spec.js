@@ -57,6 +57,27 @@ describe('IpRecordFactory', function () {
     });
 
 
+    describe('createFromGeoipReflector', function () {
+
+        it('creates IpRecord from GeoipReflector', function () {
+
+            var stubGet = sinon.stub(infrastructure.http, 'get');
+            stubGet.withArgs('http://geoip-reflector.herokuapp.com/').returns(Promise.resolve({responseText: '{"ipAddr":"94.119.150.49","countryCode":"GB"}'}));
+
+            IpRecordFactory.createFromGeoipReflector().then(function (ipRecord) {
+
+                expect(ipRecord instanceof IpRecord).toBe(true);
+                expect(ipRecord.ipAddr).toBe('94.119.150.49');
+
+            });
+
+            stubGet.restore();
+
+        });
+
+    });
+
+
     describe('createFromJsonString', function () {
 
         it('creates ip record from JSON string', function () {
