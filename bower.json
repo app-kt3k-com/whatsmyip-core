@@ -21,7 +21,7 @@
     "es6-promise": "~1.0.0",
     "flag-sprite": "git://github.com/kt3k/flag-sprite#0.2.0",
     "t10": "~0.1.0",
-    "font-awesome-4.0.3.zip": "http://fontawesome.io/assets/font-awesome-4.1.0.zip"
+    "fontawesome": "~4.2.0"
   },
   "devDependencies": {
     "sinon-1.7.3.js": "http://sinonjs.org/releases/sinon-1.7.3.js"
