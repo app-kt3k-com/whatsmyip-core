@@ -1,5 +1,5 @@
 
-/* global describe, it, expect, sinon, Promise, infrastructure */
+/* global describe, it, expect, waits, sinon, Promise, infrastructure */
 
 describe('IpRecordFactory', function () {
     'use strict';
@@ -48,9 +48,11 @@ describe('IpRecordFactory', function () {
                 expect(ipRecord instanceof IpRecord).toBe(true);
                 expect(ipRecord.ipAddr).toBe('11.12.13.14');
 
+                stubGet.restore();
+
             });
 
-            stubGet.restore();
+            waits(100);
 
         });
 
@@ -69,9 +71,11 @@ describe('IpRecordFactory', function () {
                 expect(ipRecord instanceof IpRecord).toBe(true);
                 expect(ipRecord.ipAddr).toBe('94.119.150.49');
 
+                stubGet.restore();
+
             });
 
-            stubGet.restore();
+            waits(100);
 
         });
 
