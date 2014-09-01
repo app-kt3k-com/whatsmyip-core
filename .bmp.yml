@@ -1,0 +1,5 @@
+version: 0.0.0
+files:
+  README.md: true
+  bower.json: '"version": "%.%.%"'
+  package.json: '"version": "%.%.%"'
