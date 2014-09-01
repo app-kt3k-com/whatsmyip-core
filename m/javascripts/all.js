@@ -6,7 +6,7 @@
 
 //= require t10
 
-//= require_directory ../../../infrastructure
+//= require_directory ../../../../infrastructure
 
 //= require_tree ../../src/domain
 
