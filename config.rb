@@ -3,7 +3,7 @@
 
 require 'yaml'
 
-config_plus = '../middleman-plus.yml'
+config_plus = '../../middleman-plus.yml'
 
 # load platform specific middleman settings
 platform_settings = File.exist?(config_plus) ? YAML.load_file(config_plus) : {}
