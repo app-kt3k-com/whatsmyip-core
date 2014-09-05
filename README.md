@@ -1,4 +1,4 @@
-# whatsmyip-core v0.0.2
+# whatsmyip-core v0.0.3
 
 > The core (js) implementation of whatsmyip apps.
 
