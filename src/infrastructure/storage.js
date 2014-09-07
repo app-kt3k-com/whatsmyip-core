@@ -1,20 +1,17 @@
 
-window.infrastructure = window.infrastructure = {};
+window.infrastructure = window.infrastructure || {};
 
-window.infrastructure = (function (straw, Promise) {
+window.infrastructure.storage = (function (straw, Promise) {
     'use strict';
 
     var exports = {};
 
-    straw = Promise;
-    Promise = straw;
-
     exports.set = function (key, value) {
-        return key && value;
+        return Promise.resolve(straw.sharedPreferences.set(key, value));
     };
 
     exports.get = function (key, defaultValue) {
-        return key && defaultValue;
+        return Promise.resolve(straw.sharedPreferences.get(key, defaultValue));
     };
 
     return exports;
