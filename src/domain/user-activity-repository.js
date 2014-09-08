@@ -1,10 +1,8 @@
 // user activity repository
 
-window.UserActivityRepository = (function () {
+window.UserActivityRepository = (function (infrastructure) {
 
     'use strict';
-
-    var straw = window.straw;
 
     var THE_KEY = 'user_activity';
 
@@ -16,12 +14,12 @@ window.UserActivityRepository = (function () {
 
 
     pt.store = function (userActivity) {
-        return straw.sharedPreferences.set(THE_KEY, userActivity.toObject());
+        return infrastructure.storage.set(THE_KEY, userActivity.toObject());
     };
 
 
     pt.retrieve = function () {
-        return straw.sharedPreferences.get(THE_KEY, null).pipe(function (obj) {
+        return infrastructure.storage.get(THE_KEY, null).then(function (obj) {
             if (obj != null) {
                 return new window.UserActivity(obj.gotIpCount, obj.hasReviewed);
             } else {
@@ -33,4 +31,4 @@ window.UserActivityRepository = (function () {
 
     return exports;
 
-}());
+}(window.infrastructure));

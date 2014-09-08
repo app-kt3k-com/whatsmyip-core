@@ -17,10 +17,6 @@ module.exports = (g) ->
         vendor: [
           'bower_components/jquery/jquery.min.js'
           'bower_components/es6-promise/promise.min.js'
-          'bower_components/straw-android/src/**/*.js'
-          'bower_components/straw-android-plugin.js/src/**/*.js'
-          '../bower_components/straw-android/src/**/*.js'
-          '../bower_components/straw-android-plugin.js/src/**/*.js'
         ]
         helpers: [
           'bower_components/sinon-1.7.3.js/index.js'
