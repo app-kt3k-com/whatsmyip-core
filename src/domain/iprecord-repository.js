@@ -1,6 +1,6 @@
 // Ip record repository class
 
-window.IpRecordRepository = (function ($, straw) {
+window.IpRecordRepository = (function (infrastructure) {
     'use strict';
 
     var MAX_NUM_IP_RECORD = 256;
@@ -19,7 +19,7 @@ window.IpRecordRepository = (function ($, straw) {
      * @return promise to resolve with IpRecord[] list of ip address records
      */
     prototype.getAll = function () {
-        return straw.sharedPreferences.get(IP_RECORD_KEY, []).pipe(function (records) {
+        return infrastructure.storage.get(IP_RECORD_KEY, []).then(function (records) {
             return records.map(function (obj) {
                 return window.IpRecordFactory.createFromObject(obj);
             });
@@ -36,7 +36,7 @@ window.IpRecordRepository = (function ($, straw) {
 
         var self = this;
 
-        return this.getAll().pipe(function (records) {
+        return this.getAll().then(function (records) {
 
             records.unshift(ipRecord.toObject());
 
@@ -44,33 +44,33 @@ window.IpRecordRepository = (function ($, straw) {
 
             return self.save(records);
 
-        }).promise();
+        });
     };
 
 
     /**
      * store object as ip address record list
      * @param Object records ip address record list to store
-     * @return promise to resolve with success flag boolean
+     * @return {Promise} promise to resolve with success flag boolean
      */
     prototype.save = function (records) {
-        return straw.sharedPreferences.set(IP_RECORD_KEY, records);
+        return infrastructure.storage.set(IP_RECORD_KEY, records);
 
     };
 
 
     prototype.getLatest = function () {
-        return straw.sharedPreferences.get(IP_LATEST_KEY, []).pipe(function (obj) {
+        return infrastructure.storage.get(IP_LATEST_KEY, []).then(function (obj) {
             return new window.IpRecordFactory.createFromObject(obj);
         });
     };
 
 
     prototype.setLatest = function (ipRecord) {
-        return straw.sharedPreferences.set(IP_LATEST_KEY, ipRecord.toObject());
+        return infrastructure.storage.set(IP_LATEST_KEY, ipRecord.toObject());
     };
 
 
     return exports;
 
-}(window.$, window.straw));
+}(window.infrastructure));

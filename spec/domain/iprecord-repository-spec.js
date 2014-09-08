@@ -1,5 +1,5 @@
 
-/* global describe, it, expect, sinon, straw, $ */
+/* global describe, it, expect, sinon, infrastructure, Promise, waits */
 
 describe('IpRecordRepository', function () {
     'use strict';
@@ -15,25 +15,25 @@ describe('IpRecordRepository', function () {
 
     describe('getAll', function () {
 
-        it('calls get method of straw.sharedPreferences plugin with appropriate arguments and returns its value', function () {
+        it('calls get method of infrastructure.storage with appropriate arguments and returns its value', function () {
 
-            var stub = sinon.stub(straw.sharedPreferences, 'get');
+            var stub = sinon.stub(infrastructure.storage, 'get');
 
-            stub.withArgs('ip-records', []).returns($.Deferred(function (d) {
-                d.resolve([{ipAddr: '8.8.8.8', countryCode: 'JPN', createdAt: 1300000000}]);
-            }));
+            stub.withArgs('ip-records', []).returns(Promise.resolve([{ipAddr: '8.8.8.8', countryCode: 'JPN', createdAt: 1300000000}]));
 
             var repo = new IpRecordRepository();
-            repo.getAll().done(function (ipRecords) {
+            repo.getAll().then(function (ipRecords) {
                 expect(ipRecords.length).toBe(1);
 
                 var ipRecord = ipRecords[0];
                 expect(ipRecord.ipAddr).toBe('8.8.8.8');
                 expect(ipRecord.countryCode).toBe('JPN');
                 expect(ipRecord.createdAt).toBe(1300000000);
+
+                stub.restore();
             });
 
-            stub.restore();
+            waits(100);
         });
     });
 
@@ -54,24 +54,30 @@ describe('IpRecordRepository', function () {
             }
 
             var stubGetAll = sinon.stub(repo, 'getAll');
-            stubGetAll.returns($.Deferred().resolve(array0));
+            stubGetAll.returns(Promise.resolve(array0));
 
-            array1.pop(); // first element is dropped
+            array1.pop(); // drop the last element
             array1.unshift('bcd'); // new item pushed
 
             var stubSave = sinon.stub(repo, 'save');
-            stubSave.withArgs(array1).returns($.Deferred().resolve(true));
+            stubSave.withArgs(array1).returns(Promise.resolve(true));
 
             repo.add({toObject: function () {
                 return 'bcd';
-            }}).done(function (result) {
+
+            }}).then(function (result) {
                 expect(result).toBe(true);
-            }).fail(function () {
+
+                stubGetAll.restore();
+                stubSave.restore();
+            }, function () {
                 expect(true).toBe(false);
+
+                stubGetAll.restore();
+                stubSave.restore();
             });
 
-            stubGetAll.restore();
-            stubSave.restore();
+            waits(100);
 
         });
 
@@ -80,21 +86,27 @@ describe('IpRecordRepository', function () {
             var repo = new IpRecordRepository();
 
             var stubGetAll = sinon.stub(repo, 'getAll');
-            stubGetAll.returns($.Deferred().resolve(['abc', 'def']));
+            stubGetAll.returns(Promise.resolve(['abc', 'def']));
 
             var stubSave = sinon.stub(repo, 'save');
-            stubSave.withArgs(['ghi', 'abc', 'def']).returns($.Deferred().resolve(true));
+            stubSave.withArgs(['ghi', 'abc', 'def']).returns(Promise.resolve(true));
 
             repo.add({toObject: function () {
                 return 'ghi';
-            }}).done(function (result) {
+
+            }}).then(function (result) {
                 expect(result).toBe(true);
-            }).fail(function () {
+
+                stubGetAll.restore();
+                stubSave.restore();
+            }, function () {
                 expect(true).toBe(false);
+
+                stubGetAll.restore();
+                stubSave.restore();
             });
 
-            stubGetAll.restore();
-            stubSave.restore();
+            waits(100);
 
         });
 
@@ -103,15 +115,19 @@ describe('IpRecordRepository', function () {
             var repo = new IpRecordRepository();
 
             var stubGetAll = sinon.stub(repo, 'getAll');
-            stubGetAll.returns($.Deferred().reject('ok!'));
+            stubGetAll.returns(Promise.reject('ok!'));
 
-            repo.add({toObject: function () {}}).done(function () {
+            repo.add({toObject: function () {}}).then(function () {
                 expect(true).toBe(false);
-            }).fail(function (result) {
+
+                stubGetAll.restore();
+            }, function (result) {
                 expect(result).toBe('ok!');
+
+                stubGetAll.restore();
             });
 
-            stubGetAll.restore();
+            waits(100);
 
         });
 
@@ -120,19 +136,24 @@ describe('IpRecordRepository', function () {
             var repo = new IpRecordRepository();
 
             var stubGetAll = sinon.stub(repo, 'getAll');
-            stubGetAll.returns($.Deferred().resolve([]));
+            stubGetAll.returns(Promise.resolve([]));
 
             var stubSave = sinon.stub(repo, 'save');
-            stubSave.returns($.Deferred().reject('ok!'));
+            stubSave.returns(Promise.reject('ok!'));
 
-            repo.add({toObject: function () {}}).done(function () {
+            repo.add({toObject: function () {}}).then(function () {
                 expect(true).toBe(false);
-            }).fail(function (result) {
+
+                stubGetAll.restore();
+                stubSave.restore();
+            }, function (result) {
                 expect(result).toBe('ok!');
+
+                stubGetAll.restore();
+                stubSave.restore();
             });
 
-            stubGetAll.restore();
-            stubSave.restore();
+            waits(100);
 
         });
     });
@@ -140,9 +161,9 @@ describe('IpRecordRepository', function () {
 
     describe('save', function () {
 
-        it('calls save method of straw.sharedPreferences plugin', function () {
+        it('calls save method of infrastructure.storage', function () {
 
-            var stubSet = sinon.stub(straw.sharedPreferences, 'set');
+            var stubSet = sinon.stub(infrastructure.storage, 'set');
             stubSet.withArgs('ip-records', ['abc']).returns('ok');
 
             var repo = new IpRecordRepository();
@@ -152,6 +173,7 @@ describe('IpRecordRepository', function () {
             expect(result).toBe('ok');
 
             stubSet.restore();
+
         });
     });
 
