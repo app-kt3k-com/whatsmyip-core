@@ -4,3 +4,4 @@ files:
   README.md: true
   bower.json: '"version": "%.%.%"'
   package.json: '"version": "%.%.%"'
+  src/application/index.js: var index.version = 'v%.%.%';
