@@ -2,6 +2,20 @@
 
 > The core (js) implementation of whatsmyip apps.
 
+# Pages
+
+- index
+  - index page
+- records
+  - history page
+
+# Application
+- common.js
+- index.js
+  - application implementation for index page
+- records.js
+  - application implementation for history page
+
 # Domain
 
 The domain layer.
@@ -57,3 +71,28 @@ This module contains procedures for index page.
 ## Records
 
 This module contains procedures for history record page.
+
+# Infrastructure
+
+You need to implement the following infrastructure modules to build this app for mobile environment.
+
+## Storage
+
+- get
+- set
+
+## Http
+
+- get
+
+## Locale
+
+- getLanguage
+
+## External service
+
+- openMarketLink
+
+## PlatformUI
+
+- toast
