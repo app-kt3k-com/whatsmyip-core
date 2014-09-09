@@ -23,8 +23,6 @@
     "es6-promise": "~1.0.0",
     "flag-sprite": "git://github.com/kt3k/flag-sprite#0.2.0",
     "t10": "~0.1.0",
-    "straw-android": "~0.2.0",
-    "straw-android-plugin.js": "git://github.com/strawjs/straw-android-plugin.js.git#v0.2.0",
     "fontawesome": "~4.2.0"
   },
   "devDependencies": {
