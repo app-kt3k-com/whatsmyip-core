@@ -3,14 +3,16 @@
 
 require 'yaml'
 
-config_plus = '../../middleman-plus.yml'
+parent_dir = '../../'
+
+config_path = parent_dir + 'whatsmyip-core-build-option.yml'
 
 # load platform specific middleman settings
-platform_settings = File.exist?(config_plus) ? YAML.load_file(config_plus) : {}
+platform_settings = File.exist?(config_path) ? YAML.load_file(config_path) : {}
 
 set :source, 'm'
 
-set :build_dir, platform_settings['build_dir'] || 'middleman-build'
+set :build_dir, platform_settings.has_key?('build_dir') ? parent_dir + platform_settings['build_dir'] : 'middleman-build'
 
 set :css_dir, 'stylesheets'
 
