@@ -18,7 +18,7 @@
     "spec-helper"
   ],
   "dependencies": {
-    "jquery": "~2.0.3",
+    "jquery": "~2.1.0",
     "bootstrap": "~3.0.2",
     "es6-promise": "~1.0.0",
     "flag-sprite": "git://github.com/kt3k/flag-sprite#0.2.0",
