@@ -28,7 +28,7 @@ window.page.records = (function (window, $) {
         // init repository
         var repository = new window.IpRecordRepository();
 
-        repository.getAll().done(function (ipRecords) {
+        repository.getAll().then(function (ipRecords) {
             //$('.debug').text(JSON.stringify(ipRecords));
 
             var table = $('<table class="table" />');

@@ -28,7 +28,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
 
         var repository = new window.UserActivityRepository();
 
-        repository.retrieve().done(function (userActivity) {
+        repository.retrieve().then(function (userActivity) {
 
             userActivity.hasReviewed = true;
 
@@ -54,7 +54,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
 
         var repository = new window.UserActivityRepository();
 
-        repository.retrieve().done(function (userActivity) {
+        repository.retrieve().then(function (userActivity) {
 
             userActivity.incrementGotIpCount();
 
@@ -80,7 +80,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
         var repository = new window.IpRecordRepository();
 
         // record latest
-        repository.getLatest().done(function (lastRecord) {
+        repository.getLatest().then(function (lastRecord) {
 
             repository.setLatest(ipRecord);
 
@@ -227,7 +227,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
 
             var repository = new window.IpRecordRepository();
 
-            repository.getLatest().done(function (ipRecord) {
+            repository.getLatest().then(function (ipRecord) {
 
                 if (ipRecord != null && ipRecord.isFresh()) {
 
