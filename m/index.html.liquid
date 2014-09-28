@@ -98,6 +98,10 @@ title: My IP Address
 
 <script>
 
-  $(window.page.index.main);
+  $(function () {
+      window.page.index.main().then(function (error) {
+          console.log(error);
+      });
+  });
 
 </script>

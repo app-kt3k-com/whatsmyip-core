@@ -14,7 +14,11 @@ title: My IP Address History
 
 <script>
 
-  $(window.page.records.main);
+  $(function () {
+      window.page.records.main().then(function (error) {
+          console.log(error);
+      });
+  });
 
 </script>
 
