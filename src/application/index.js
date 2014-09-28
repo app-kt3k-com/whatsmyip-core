@@ -22,7 +22,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
     var exports = {};
     var index = exports;
 
-    index.version = 'v0.0.8';
+    index.version = 'v0.0.9';
 
     exports.doReview = function () {
 
