@@ -99,7 +99,7 @@ title: My IP Address
 <script>
 
   $(function () {
-      window.page.index.main().then(function (error) {
+      window.page.index.main().then(null, function (error) {
           console.log(error);
       });
   });
