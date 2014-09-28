@@ -227,7 +227,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
 
             var repository = new window.IpRecordRepository();
 
-            repository.getLatest().then(function (ipRecord) {
+            return repository.getLatest().then(function (ipRecord) {
 
                 if (ipRecord != null && ipRecord.isFresh()) {
 
