@@ -55,7 +55,7 @@ window.page.records = (function (window, $) {
 
     exports.main = function () {
 
-        window.common.initI18n().then(function () {
+        return window.common.initI18n().then(function () {
 
             window.common.scan();
 

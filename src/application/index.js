@@ -219,7 +219,7 @@ window.page.index = (function (window, $, t10, infrastructure) {
 
     index.main = function () {
 
-        window.common.initI18n().then(function () {
+        return window.common.initI18n().then(function () {
 
             window.common.scan();
 
