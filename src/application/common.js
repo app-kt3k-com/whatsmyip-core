@@ -2,8 +2,6 @@
 window.common = (function (window, t10, Promise, infrastructure) {
     'use strict';
 
-    var APP_ID = 'com.kt3k.app.whatsmyip';
-
     var exports = {};
 
     exports.scan = function () {
@@ -29,13 +27,9 @@ window.common = (function (window, t10, Promise, infrastructure) {
         });
     };
 
-    exports.openMarketLink = function (id) {
+    exports.openMarketLink = function () {
 
-        if (id == null) {
-            id = APP_ID;
-        }
-
-        infrastructure.externalService.openMarketLink(id);
+        infrastructure.externalService.openMarketLink();
 
     };
 
