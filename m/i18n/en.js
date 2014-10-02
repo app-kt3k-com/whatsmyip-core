@@ -8,9 +8,9 @@ window.t10.setResource({
     "common.loading": "Loading...",
     "common.googleplay": "Google Play",
     "common.reload": "Reload",
-    "ip.done": "Done!",
-    "ip.failed": "Failed...",
+    "ip.done": "Done",
+    "ip.failed": "Failed",
     "ip.failed_to_get_new_ip_record": "Failed to get ip address. Please try again later.",
-    "ip.start_loading": "Start checking ip address...",
+    "ip.start_loading": "Checking IP",
     "page.history": "IP History",
 });
