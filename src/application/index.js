@@ -7,7 +7,6 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
 
     var IP_LOADING_ID = '#ip-loading';
     var IP_INPUT_ID = '#ip-input';
-    var ASK_REVIEW_MODAL_ID = '#ask-review';
 
     var IP_RELOAD_BUTTON_CLASS = '.ip-reload-button';
     var IP_INDICATOR_CLASS = '.ip-indicator';
@@ -16,8 +15,6 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
 
     var COUNTRY_ICON_CLASS = '.country-icon';
     var COUNTRY_ICON_DEFAULT = 'flag country-icon';
-
-    var LINK_TO_HISTORY = '.link-to-records';
 
     var exports = {};
     var index = exports;
@@ -44,7 +41,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
 
         setTimeout(function () {
 
-            $(ASK_REVIEW_MODAL_ID).modal('show');
+            ui.index.askReviewModal.show();
 
         }, 800);
 
