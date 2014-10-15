@@ -2,7 +2,7 @@
 
 window.page = window.page || {};
 
-window.page.index = (function (window, $, t10, infrastructure) {
+window.page.index = (function (window, $, t10, infrastructure, ui) {
     'use strict';
 
     var IP_LOADING_ID = '#ip-loading';
@@ -248,11 +248,11 @@ window.page.index = (function (window, $, t10, infrastructure) {
     index.initEvents = function () {
         $(IP_RELOAD_BUTTON_CLASS).click(index.startLoading);
 
-        $(LINK_TO_HISTORY).click(function () {
+        ui.index.linkToHistory.bind(function () {
             window.location.href = 'records.html';
         });
     };
 
     return exports;
 
-}(window, window.$, window.t10, window.infrastructure));
+}(window, window.$, window.t10, window.infrastructure, window.ui));

@@ -10,4 +10,6 @@
 
 //= require_tree ../../src/domain
 
+//= require_tree ../../src/ui
+
 //= require_tree ../../src/application
