@@ -133,7 +133,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
         var retryCount = 0;
 
         // default to 15 seconds
-        timeout = timeout == null ? 15000 : timeout;
+        timeout = timeout == null ? 7000 : timeout;
 
         // default to 10
         retryLimit = retryLimit == null ? 10 : retryLimit;
