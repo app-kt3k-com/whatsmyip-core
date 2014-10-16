@@ -18,7 +18,7 @@ window.ui.index = (function (window, $) {
 
     exports.askReviewModal = {
         show: function () {
-            $(ASK_REVIEW_MODAL_ID).modal('show')
+            $(ASK_REVIEW_MODAL_ID).modal('show');
         }
     };
 
