@@ -6,20 +6,55 @@ window.ui.index = (function (window, $) {
 
     var exports = {};
 
-    var LINK_TO_HISTORY = '.link-to-records';
-
     exports.linkToHistory = {
         bind: function (handler) {
-            $(LINK_TO_HISTORY).click(handler);
+            $('.link-to-records').click(handler);
         }
     };
 
-    var ASK_REVIEW_MODAL_ID = '#ask-review';
-
     exports.askReviewModal = {
         show: function () {
-            $(ASK_REVIEW_MODAL_ID).modal('show');
+            $('#ask-review').modal('show');
         }
+    };
+
+    var IP_RELOAD_BUTTON = '.ip-reload-button'
+
+    exports.ipControl = {
+        onReload: function (handler) {
+            $('#ip-control ' + IP_RELOAD_BUTTON).click(handler);
+        },
+
+        succeed: function (ipRecord) {
+        },
+
+        fail: function () {
+        },
+
+        loading: function () {
+        }
+    };
+
+    var MAIN_CONTROLS = '.main-control';
+
+    var LINK_TO_RECORDS = '.link-to-records';
+
+    exports.mainControls = {
+        onReload: function (handler) {
+            $(MAIN_CONTROLS + IP_RELOAD_BUTTON).click(handler);
+        },
+
+        onClickHistoryButton: function (handler) {
+            $(MAIN_CONTROLS + LINK_TO_RECORDS).click(handler);
+        },
+
+        show: function () {
+            $(MAIN_CONTROLS).css('visibility', 'visible');
+        },
+
+        hide: function () {
+            $(MAIN_CONTROLS).css('visibility', 'hidden');
+        },
     };
 
     return exports;

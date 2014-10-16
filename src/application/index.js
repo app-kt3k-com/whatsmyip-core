@@ -8,10 +8,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
     var IP_LOADING_ID = '#ip-loading';
     var IP_INPUT_ID = '#ip-input';
 
-    var IP_RELOAD_BUTTON_CLASS = '.ip-reload-button';
     var IP_INDICATOR_CLASS = '.ip-indicator';
-
-    var MAIN_CONTROLS = '.main-control';
 
     var COUNTRY_ICON_CLASS = '.country-icon';
     var COUNTRY_ICON_DEFAULT = 'flag country-icon';
@@ -143,7 +140,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
 
 
         // enable main controls
-        $(MAIN_CONTROLS).css('visibility', 'visible');
+        ui.mainControls.show();
 
         window.common.scan();
     };
@@ -165,7 +162,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
         $(IP_INDICATOR_CLASS).removeClass('alert-info').removeClass('alert-danger');
 
         // disable main controls
-        $(MAIN_CONTROLS).css('visibility', 'hidden');
+        ui.mainControls.hide();
 
         // reset country icon
         $(COUNTRY_ICON_CLASS).attr('class', COUNTRY_ICON_DEFAULT);
@@ -243,9 +240,11 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
     };
 
     index.initEvents = function () {
-        $(IP_RELOAD_BUTTON_CLASS).click(index.startLoading);
+        ui.index.ipControl.onReload(index.startLoading);
 
-        ui.index.linkToHistory.bind(function () {
+        ui.index.mainControls.onReload(index.startLoading)
+
+        ui.index.mainControls.onClickHistoryButton(function () {
             window.location.href = 'records.html';
         });
     };
