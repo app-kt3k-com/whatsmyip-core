@@ -5,14 +5,6 @@ window.page = window.page || {};
 window.page.index = (function (window, $, t10, infrastructure, ui) {
     'use strict';
 
-    var IP_LOADING_ID = '#ip-loading';
-    var IP_INPUT_ID = '#ip-input';
-
-    var IP_INDICATOR_CLASS = '.ip-indicator';
-
-    var COUNTRY_ICON_CLASS = '.country-icon';
-    var COUNTRY_ICON_DEFAULT = 'flag country-icon';
-
     var exports = {};
     var index = exports;
 
@@ -88,23 +80,20 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
             repository.add(ipRecord);
         });
 
-        fillIpAddr(ipRecord.ipAddr);
-        fillCountryCode(ipRecord.countryCode);
+        ui.index.ipControl.gotNewRecord(ipRecord);
 
-        // loading icon turn to thumbs up
-        $(IP_LOADING_ID).addClass('fa-thumbs-o-up');
+        // enable main controls
+        ui.index.mainControls.show();
 
-        // add info color
-        $(IP_INDICATOR_CLASS).addClass('alert-info');
     };
 
     var gotCachedIpRecord = function (ipRecord) {
 
-        fillIpAddr(ipRecord.ipAddr);
-        fillCountryCode(ipRecord.countryCode);
+        ui.index.ipControl.gotCachedRecord(ipRecord);
 
-        // loading icon turn into check mark
-        $(IP_LOADING_ID).addClass('fa-check');
+        // enable main controls
+        ui.index.mainControls.show();
+
     };
 
     var failedToGetNewIpRecord = function () {
@@ -112,65 +101,29 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
         infrastructure.platformUI.toast(t10.t('ip.failed_to_get_new_ip_record'));
 
         // fill ui
-        fillIpAddr(t10.t('ip.failed'), false);
-
-        // loading icon turn to frown
-        $(IP_LOADING_ID).addClass('fa-frown-o');
-
-        // add danger color
-        $(IP_INDICATOR_CLASS).addClass('alert-danger');
-    };
-
-    var fillCountryCode = function (countryCode) {
-
-        if (countryCode == null) {
-            return;
-        }
-
-        $(COUNTRY_ICON_CLASS).addClass('flag-' + countryCode.toLowerCase());
-    };
-
-    var fillIpAddr = function (ipAddr) {
-
-        // set ip label
-        $(IP_INPUT_ID).val(ipAddr);
-
-        // stop spin and thumbs up
-        $(IP_LOADING_ID).removeClass('fa-refresh').removeClass('fa-spin');
-
+        ui.index.ipControl.failed(t10.t('ip.failed'));
 
         // enable main controls
-        ui.mainControls.show();
+        ui.index.mainControls.show();
 
-        window.common.scan();
     };
 
     index.startLoading = function () {
 
-        var t10 = window.t10;
-
         // toast welcome message
         infrastructure.platformUI.toast(t10.t('ip.start_loading'));
 
-        // remove ip label
-        $(IP_INPUT_ID).val('');
-
-        // spin refresh icon
-        $(IP_LOADING_ID).addClass('fa-refresh').addClass('fa-spin').removeClass('fa-check').removeClass('fa-frown-o').removeClass('fa-thumbs-o-up');
-
-        // remove info color
-        $(IP_INDICATOR_CLASS).removeClass('alert-info').removeClass('alert-danger');
+        // ip control start loading
+        ui.index.ipControl.loading();
 
         // disable main controls
-        ui.mainControls.hide();
-
-        // reset country icon
-        $(COUNTRY_ICON_CLASS).attr('class', COUNTRY_ICON_DEFAULT);
+        ui.index.mainControls.hide();
 
         // fetch ip and display
         exports.GeoipLoader().done(gotNewIpRecord).fail(failedToGetNewIpRecord);
 
         window.common.scan();
+
     };
 
     exports.GeoipLoader = function (timeout, retryLimit) {
@@ -242,7 +195,7 @@ window.page.index = (function (window, $, t10, infrastructure, ui) {
     index.initEvents = function () {
         ui.index.ipControl.onReload(index.startLoading);
 
-        ui.index.mainControls.onReload(index.startLoading)
+        ui.index.mainControls.onReload(index.startLoading);
 
         ui.index.mainControls.onClickHistoryButton(function () {
             window.location.href = 'records.html';
