@@ -96,3 +96,13 @@ You need to implement the following infrastructure modules to build this app for
 ## PlatformUI
 
 - toast
+
+# View
+
+## index
+
+### ipControl
+
+### mainControl
+
+## records
