@@ -13,9 +13,9 @@
   "author": "Yosiya Hinosawa",
   "license": "MIT",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.6.0",
-    "grunt-contrib-jasmine": "~0.5.2",
+    "grunt": "~1.0.1",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-jasmine": "~1.0.3",
     "jasmine-jscoverage-reporter": "git://github.com/kt3k/jasmine-jscoverage-reporter#v0.1.2"
   }
 }
